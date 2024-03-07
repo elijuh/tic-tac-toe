@@ -1,0 +1,5 @@
+name: TicTacToe
+author: elijuh
+version: ${project.version}
+api-version: 1.13
+main: dev.elijuh.tictactoe.Core
