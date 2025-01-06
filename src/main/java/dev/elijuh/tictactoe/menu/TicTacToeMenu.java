@@ -67,7 +67,8 @@ public class TicTacToeMenu extends Menu {
         blank.setItemMeta(meta);
 
         for (int i = 0; i < inventory.getSize(); i++) {
-            if (inventory.getItem(i) == null) {
+            ItemStack item = inventory.getItem(i);
+            if (item == null || item.getType() == blank.getType()) {
                 inventory.setItem(i, blank);
             }
         }
@@ -153,9 +154,10 @@ public class TicTacToeMenu extends Menu {
         grid[slot] = turn;
         inventory.setItem(slot, MARKERS[turn]);
         tryWin(slot / 3, slot % 3);
+        moves++;
         fillBlanks();
         clicker.playSound(clicker.getLocation(), Sound.CLICK, 1f, 1f);
-        if (++moves >= grid.length) {
+        if (moves >= grid.length) {
             draw();
         }
     }
